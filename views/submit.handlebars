@@ -1,0 +1,78 @@
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col offset-1">
+        <h1>Admin Only:</h1>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col offset-1">
+            {{!-- begin tabbing --}}
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="/dashboard">Vocabulary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spelling">Spelling</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/submit">Submit Content</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+              {{!-- end tabbing  --}}
+    <div class="row">
+      <div class="col-8 offset-2">
+        <form class="clearfix mb-4" action="POST">
+          {{!-- word itself --}}
+          <div class="form-group">
+            <label for="example-text">Word:</label>
+            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Text">
+          </div>
+          {{!-- word Type --}}
+          <div class="form-group">
+            <label for="example-type">Word Type:</label>
+            <input type="text" id="example-type" class="form-control" aria-describedby="example-type" placeholder="Enter Text">
+          </div>
+          {{!-- word pronunciation --}}
+          {{!-- <div class="form-group">
+            <label for="example-pron">Word Pronunciation:</label>
+            <input type="text" id="example-pron" class="form-control" aria-describedby="example-pron" placeholder="Enter Text">
+          </div> --}}
+          {{!-- word definition  --}}
+          <div class="form-group">
+            <label for="example-description">Word Definition</label>
+            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Text"></textarea>
+          </div>
+          {{!-- word pronunciation --}}
+          <div class="form-group">
+            <label for="example-use">Word Use Example:</label>
+            <input type="text" id="example-use" class="form-control" aria-describedby="example-use" placeholder="Enter Text">
+          </div>
+          {{!-- submit button --}}
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Words in Database:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each words}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.word_itself}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/submit.js"></script>

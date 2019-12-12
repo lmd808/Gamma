@@ -1,0 +1,77 @@
+
+
+<div id="home">
+  <div class="container">
+      <div class="row">
+          <div class="col-8 offset-1">
+        <h1>Welcome to Gamma</h1>
+        <hr>
+          </div>  
+      </div>
+      <div class="row">
+        <div class="col offset-1">
+            {{!-- begin tabbing --}}
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="/index">Vocabulary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spelling">Spelling</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/submit">Submit Content</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+              {{!-- end tabbing  --}}
+  <br>
+        <div class="row">
+          <div class="col-3 offset-1">
+            <div class="card" style="width: 16rem;">
+            <div class="card-body">
+            <h5 class="card-title">Word of the day</h5>
+            {{!-- below is where the word will be held  with word type--}}
+            <h6 class="card-subtitle mb-2 text-muted" id="word_itself">{{word_itself}}: {{ word_Type}}</h6>
+            {{!-- Definition --}}
+            <p id="word_definition">{{word_definition}}</p>
+            <a href="/example/{{word.id}}" class="card-link">See More</a>
+            </div>
+            </div>
+          </div>
+          <div class="col-3">
+             <div class="card" style="width: 16rem;">
+            <div class="card-body">
+            <h5 class="card-title">Vocab Quiz</h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="word_itself">Take the Quiz</h6>
+            <a href="/quiz" class="card-link">Quiz</a>
+            </div>
+            </div>
+          </div>
+          <div class="col-3 offset-2">
+            <div class="card" style="width: 16rem;">
+              {{!-- for this they can pick an emoji--}}
+                <img src="..." class="card-img-top" alt="..." id="user_image">
+                <div class="card" style="width: 18rem;">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" id="user_name">User Name:</li>
+                    <li class="list-group-item" id="gamma_score">Gamma: </li>
+                    <li class="list-group-item" id="favorites">Vestibulum at eros</li>
+                  </ul>
+                </div>
+              </div>
+          </div>
+        </div>    
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="/js/index.js"></script>
