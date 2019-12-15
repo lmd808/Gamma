@@ -13,10 +13,10 @@
             {{!-- begin tabbing --}}
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="/index">Vocabulary</a>
+              <a class="nav-link active" href="/">Vocabulary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/spelling">Spelling</a>
+              <a class="nav-link" href="/favorites">Favorites</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/submit">Submit Content</a>
@@ -33,31 +33,37 @@
               {{!-- end tabbing  --}}
   <br>
         <div class="row">
+          <div class="col-5 offset-1">
+           <div class="card"> 
+           <div class="card-body">
+           <h1 class="card-title" > Word of the Day:</h1>
+                <p class="lead" id="word_itself"></p>
+                <hr class="my-4">
+                <p id="word_definition"></p>
+                <br>
+                <p id="example_use"></p>
+                <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/dictionary" role="button">See More Words</a>
+                </p>
+                </div> 
+            </div>     
+          </div>
+          <div class="col-2">
+             <div class="card" style="width: 16rem; height:24rem">
+            <div class="card-body">
+            <h5 class="card-title">Missed a day?</h5>
+            <hr>
+            <h6 class="card-subtitle mb-2 text-muted"></h6>
+            <br>
+            <p>Have no fear! We're keeping track of your weekly words right here!</p>
+            <a href="/wordOfWeek" class="card-link">Link</a>
+            </div>
+            </div>
+          </div>
           <div class="col-3 offset-1">
             <div class="card" style="width: 16rem;">
-            <div class="card-body">
-            <h5 class="card-title">Word of the day</h5>
-            {{!-- below is where the word will be held  with word type--}}
-            <h6 class="card-subtitle mb-2 text-muted" id="word_itself">{{word_itself}}: {{ word_Type}}</h6>
-            {{!-- Definition --}}
-            <p id="word_definition">{{word_definition}}</p>
-            <a href="/example/{{word.id}}" class="card-link">See More</a>
-            </div>
-            </div>
-          </div>
-          <div class="col-3">
-             <div class="card" style="width: 16rem;">
-            <div class="card-body">
-            <h5 class="card-title">Vocab Quiz</h5>
-            <h6 class="card-subtitle mb-2 text-muted" id="word_itself">Take the Quiz</h6>
-            <a href="/quiz" class="card-link">Quiz</a>
-            </div>
-            </div>
-          </div>
-          <div class="col-3 offset-2">
-            <div class="card" style="width: 16rem;">
               {{!-- for this they can pick an emoji--}}
-                <img src="..." class="card-img-top" alt="..." id="user_image">
+                <img src="" class="card-img-top" alt="for Now" id="user_image">
                 <div class="card" style="width: 18rem;">
                   <ul class="list-group list-group-flush">
                     <li class="list-group-item" id="user_name">User Name:</li>

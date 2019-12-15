@@ -8,12 +8,12 @@
   <div class="row">
         <div class="col offset-1">
             {{!-- begin tabbing --}}
-          <ul class="nav nav-tabs">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="/dashboard">Vocabulary</a>
+              <a class="nav-link active" href="/">Vocabulary</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/spelling">Spelling</a>
+              <a class="nav-link" href="/favorites">Favorites</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/submit">Submit Content</a>
@@ -52,3 +52,11 @@
   <a href="/">← Back To Home</a>
   <div class="row"></div>
 </div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_LZGYLOBggL5FCDw6Woxte");
+   })();
+</script>
+<script src="/js/contact.js"></script>

@@ -1,0 +1,43 @@
+<div class="container">
+      <div class="row">
+          <div class="col-8 offset-1">
+        <h1>Words of The Week</h1>
+        <hr>
+          </div>  
+      </div>
+<div class="row">
+        <div class="col offset-1">
+            {{!-- begin tabbing --}}
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Vocabulary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/favorites">Favorites</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/submit">Submit Content</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/users/logout">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+              {{!-- end tabbing  --}}
+  <br>
+  <div class="row">
+  <div class="col offset-1">
+        <ul id="example-list" class="list-group">
+          {{#each words}}
+          <li data-id="{{this.id}}" class="list-group-item" style="border-bottom:2px lightgrey solid;">
+            <a href="example/{{this.id}}"><strong>{{this.word_itself}}</strong>: <em>{{this.word_Type}}</em>, {{this.word_Definition}}</a>
+          </li>
+          {{/each}}
+</ul>
+</div>
+</div>
+</div>

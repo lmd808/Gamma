@@ -2,18 +2,35 @@ var db = require('../models');
 
 
 module.exports = function(app) {
-
-// // Welcome Page
-// app.get('/', forwardAuthenticated, (req, res) => res.render('welcome'));
-
 // Dashboard
 app.get('/', function(req, res) {
-
-	res.render('dashboard'); 
-
+		db.WordOfDay.findOne({}).then(function(data) {
+			res.render('dashboard');
+			console.log(data); 
+		});
 	});
 
+//load dictionary in it's entirity. For more info look at files dictionary.handlebars and dictionary.js 
+app.get('/dictionary', function(req, res) {
+		db.Word.findAll({order: [
+      ['word_itself', 'ASC'], // Sorts by COLUMN_NAME_EXAMPLE in ascending order
+]}).then(function(dbExamples) {
+			res.render('dictionary', {
+				words: dbExamples
+			});
+		});
+	});
 
+// load words of the week table 
+app.get('/wordOfWeek', function (req, res){
+	db.wordsOfTheWeek.findAll({order: [
+      ['word_itself', 'ASC'], // Sorts by COLUMN_NAME_EXAMPLE in ascending order
+]}).then(function(dbExamples) {
+			res.render('wordOfWeek', {
+				words: dbExamples
+			});
+		});
+}) 
 // Load submit words page
 app.get('/submit', function(req, res) {
 		db.Word.findAll({}).then(function(dbExamples) {
@@ -42,6 +59,6 @@ app.get('/submit', function(req, res) {
 
 	// Render 404 page for any unmatched routes
 	app.get('*', function(req, res) {
-		res.render('404');
+		res.render('error');
 	});
 };
