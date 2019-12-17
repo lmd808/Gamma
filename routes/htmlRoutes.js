@@ -13,7 +13,7 @@ app.get('/login', authController.login);
 app.get('/favorites', isLoggedIn, authController.favorites);
 
 // submit route 
-app.get('/submit',isLoggedIn, authController.submit);
+app.get('/submit', requireAdmin , authController.submit);
 
 // logout to protect 
 app.get('/logout',authController.logout);
@@ -91,4 +91,13 @@ function isLoggedIn(req, res, next) {
          
     res.redirect('/login');
  
+}
+
+// this allows me to check if someone is an admin or not 
+function requireAdmin( req, res, next) {
+   if (req.isAuthenticated() && req.user.isAdmin === true)
+     
+        return next();
+         
+    res.redirect('/login');
 }

@@ -100,7 +100,7 @@ cron.schedule('* * * * *', function() {
         wordsOfTheWeek(); 
         // this calls my email function that allows me to send me word of the day to my clients 
         // Automatically 
-        email(dbWordOfDay); 
+        // email(dbWordOfDay); 
 			})})
     // currently works 
     }      
