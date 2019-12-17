@@ -1,7 +1,15 @@
 var db = require('../models');
+var authController = require('./authcontroller.js');
 
 
 module.exports = function(app) {
+// register route 
+app.get('/register', authController.register); 
+
+// login route 
+app.get('/login', authController.login);
+
+
 // Dashboard
 app.get('/', function(req, res) {
 		db.WordOfDay.findOne({}).then(function(data) {

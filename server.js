@@ -4,6 +4,17 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 var app = express();
 var PORT = process.env.PORT || 3000;
+// passport 
+var passport   = require('passport')
+var session    = require('express-session')
+// end passport 
+
+// passport middleware 
+app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret 
+app.use(passport.initialize()); 
+app.use(passport.session());
+// end passport middleware
+
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -17,7 +28,7 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 // Routes
-require("./routes/apiRoutes")(app);
+require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app);
 var syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
@@ -35,6 +46,10 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+
+//load passport strategies
+require('./config/passport.js')(passport, db.User);
+
 // welcome to the fuckening 
 
 // --------------------------------------------------------------------

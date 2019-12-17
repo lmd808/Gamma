@@ -5,5 +5,7 @@ module.exports = function(sequelize, DataTypes) {
 		word_Definition: DataTypes.TEXT,
 		example_Use: DataTypes.TEXT
 	});
+
+	
 	return Word;
 };

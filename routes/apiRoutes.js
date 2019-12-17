@@ -1,7 +1,22 @@
-const db = require('../models');
+var db = require('../models');
 
-
-module.exports = function(app) {
+module.exports = function(app, passport) {
+	// register route 
+	app.post('/register', passport.authenticate('local-signup', {
+        successRedirect: '/',
+ 
+        failureRedirect: '/register'
+    }
+ 
+));
+//  login route 
+app.post('/login', passport.authenticate('local-signup', {
+        successRedirect: '/dashboard',
+ 
+        failureRedirect: '/signup'
+    }
+ 
+));
   //get word of the day from word of the day table 
 	app.get('/api/dailyWord', function(req, res) {
 		db.WordOfDay.findOne({}).then((dbExample) => {
