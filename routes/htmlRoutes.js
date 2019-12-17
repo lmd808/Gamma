@@ -82,7 +82,7 @@ app.get('/submit', function(req, res) {
 	});
 };
 
-// my auth function 
+// my auth function for general sign up and login. Only allows access to favorites tab 
 function isLoggedIn(req, res, next) {
  
     if (req.isAuthenticated())
@@ -94,6 +94,7 @@ function isLoggedIn(req, res, next) {
 }
 
 // this allows me to check if someone is an admin or not 
+// full access 
 function requireAdmin( req, res, next) {
    if (req.isAuthenticated() && req.user.isAdmin === true)
      
@@ -101,3 +102,5 @@ function requireAdmin( req, res, next) {
          
     res.redirect('/login');
 }
+
+
