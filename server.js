@@ -100,11 +100,29 @@ cron.schedule('* * * * *', function() {
         wordsOfTheWeek(); 
         // this calls my email function that allows me to send me word of the day to my clients 
         // Automatically 
-        // email(dbWordOfDay); 
+        email(dbWordOfDay, userString); 
 			})})
     // currently works 
     }      
 });
+
+// all users function grabs all of my users from my user DB and joins them as a string seperated by a comma 
+var usersArray = [];
+var userString; 
+function allUsers (){
+  db.User.findAll({
+    attributes: ['email']
+  }).then(function (data){
+    for(var i = 0; i< data.length; i++){
+    usersArray.push(data[i].dataValues.email); 
+    }
+    console.log(usersArray); 
+  userString = usersArray.toString(); 
+  console.log(userString);
+  })
+}
+allUsers(); 
+
 
 // call words of the week table 
 // working- creates data for my wordsOfTheWeek Model 
@@ -115,13 +133,11 @@ function wordsOfTheWeek(){
     word_Definition: word_Definition,
     example_Use: example_Use
   }).then(function(data){
-    // remove console log
-    // console.log(data); 
   })
 
 }
 // cron scheduler set to ever 6 minutes. this clears my words of the week table 
-cron.schedule('*/6 * * * *', function() {
+cron.schedule('*/7 * * * *', function() {
   db.wordsOfTheWeek.destroy({where:{}}).then(function(data){
     console.log(`Table Cleared`)
   })
@@ -144,7 +160,7 @@ let transport = nodemailer.createTransport({
 function email(dbWordOfDay){
 const message = {
     from: 'safetrek001@gmail.com', // Sender address
-    to: 'to@email.com',         // List of recipients
+    to: userString,         // List of recipients
     subject: 'Gamma- Word Of the Day', // Subject line
     html: `<br>
       <h2>The word of the day is:  ${dbWordOfDay.dataValues.word_itself} </h2>
