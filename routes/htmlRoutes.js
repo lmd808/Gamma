@@ -2,12 +2,23 @@ var db = require('../models');
 var authController = require('./authcontroller.js');
 
 
-module.exports = function(app) {
+module.exports = function(app, passport) {
 // register route 
 app.get('/register', authController.register); 
 
 // login route 
 app.get('/login', authController.login);
+
+// favorites route 
+app.get('/favorites', isLoggedIn, authController.favorites);
+
+// submit route 
+app.get('/submit',isLoggedIn, authController.submit);
+
+// logout to protect 
+app.get('/logout',authController.logout);
+
+
 
 
 // Dashboard
@@ -70,3 +81,14 @@ app.get('/submit', function(req, res) {
 		res.render('error');
 	});
 };
+
+// my auth function 
+function isLoggedIn(req, res, next) {
+ 
+    if (req.isAuthenticated())
+     
+        return next();
+         
+    res.redirect('/login');
+ 
+}

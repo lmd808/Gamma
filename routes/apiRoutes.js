@@ -9,11 +9,11 @@ module.exports = function(app, passport) {
     }
  
 ));
-//  login route 
-app.post('/login', passport.authenticate('local-signup', {
-        successRedirect: '/dashboard',
+  //  login route 
+app.post('/login', passport.authenticate('local-signin', {
+        successRedirect: '/',
  
-        failureRedirect: '/signup'
+        failureRedirect: '/login'
     }
  
 ));
