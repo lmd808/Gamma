@@ -65,6 +65,21 @@ var word_id;
 var word_Type;
 var word_Definition;
 var example_Use;
+var usersArray = [];
+var userString; 
+// all users function grabs all of my users from my user DB and joins them as a string seperated by a comma 
+function allUsers (){
+  db.User.findAll({
+    attributes: ['email']
+  }).then(function (data){
+    for(var i = 0; i< data.length; i++){
+    usersArray.push(data[i].dataValues.email); 
+
+    }
+  userString = usersArray.toString(); 
+  })
+  return userString;
+}
 
 // cron job scheduled for ever min for testing 
 cron.schedule('* * * * *', function() {
@@ -78,9 +93,6 @@ cron.schedule('* * * * *', function() {
     word_Type = returnOBJ.dataValues.word_Type; 
     word_Definition = returnOBJ.dataValues.word_Definition; 
     example_Use = returnOBJ.dataValues.example_Use; 
-    // console log to double check that the data being sent out is correct 
-    // console.log(`${word_id} \n ${word_itself} \n ${word_Type} \n ${word_Definition} \n ${example_Use}`); 
-    // return returnOBJ; 
     // call back function with my variables as params!!!!
     WordOfTheDayTableFunction(word_itself, word_Type, word_Definition, example_Use, word_id); 
  
@@ -101,30 +113,12 @@ cron.schedule('* * * * *', function() {
         wordsOfTheWeek(); 
         // this calls my email function that allows me to send me word of the day to my clients 
         // Automatically 
-        email(dbWordOfDay, userString); 
+        // turn on when i deploy 
+        // email(dbWordOfDay, userString); 
 			})})
     // currently works 
     }      
 });
-
-// all users function grabs all of my users from my user DB and joins them as a string seperated by a comma 
-var usersArray = [];
-var userString; 
-function allUsers (){
-  db.User.findAll({
-    attributes: ['email']
-  }).then(function (data){
-    for(var i = 0; i< data.length; i++){
-    usersArray.push(data[i].dataValues.email); 
-    }
-    console.log(usersArray); 
-  userString = usersArray.toString(); 
-  console.log(userString);
-  })
-}
-
-
-
 // call words of the week table 
 // working- creates data for my wordsOfTheWeek Model 
 function wordsOfTheWeek(){ 
