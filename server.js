@@ -61,7 +61,7 @@ var word_id;
 var word_Type;
 var word_Definition;
 var example_Use;
-var usersArray = [];
+var usersArray;
 var userString;
 
 // all users function grabs all of my users from my user DB and joins them as a string seperated by a comma
@@ -71,6 +71,7 @@ function allUsers() {
 			attributes: [ 'email' ]
 		})
 		.then(function(data) {
+			usersArray = [];
 			for (var i = 0; i < data.length; i++) {
 				usersArray.push(data[i].dataValues.email);
 			}
