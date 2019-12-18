@@ -164,7 +164,7 @@ const message = {
       <br>
       Definition: ${dbWordOfDay.dataValues.word_Definition} 
       <br>
-      Learn more about ${dbWordOfDay.dataValues.word_itself} <a href="http://localhost:3000/">HERE</a>`
+      Learn more about ${dbWordOfDay.dataValues.word_itself} <a href="https://desolate-eyrie-68120.herokuapp.com/">HERE</a>`
 };
 // execution of email and confirming 
 transport.sendMail(message, function(err, info) {

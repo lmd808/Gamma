@@ -88,7 +88,7 @@ passport.use('local-signin', new LocalStrategy(
  
  
         }).catch(function(err) {
- 
+            // signupForm.querySelector('.signupError').innerHTML = err.message;
             console.log("Error:", err);
  
             return done(null, false, {
