@@ -67,6 +67,8 @@ var word_Definition;
 var example_Use;
 var usersArray = [];
 var userString; 
+
+
 // all users function grabs all of my users from my user DB and joins them as a string seperated by a comma 
 function allUsers (){
   db.User.findAll({
@@ -76,13 +78,13 @@ function allUsers (){
     usersArray.push(data[i].dataValues.email); 
 
     }
-  userString = usersArray.toString(); 
+  var userString = usersArray.toString(); 
   })
   return userString;
 }
 
 // cron job scheduled for ever min for testing 
-cron.schedule('0 */1 * * *', function() {
+cron.schedule('* * * * *', function() {
   allUsers(); 
   // randomly select a word from my database. that word will then be sent out to my word of the day table 
     db.Word.findOne({ order: [ db.Sequelize.fn('RAND') ] }).then((dbExample) => {
@@ -132,7 +134,7 @@ function wordsOfTheWeek(){
 
 }
 // cron scheduler set to ever 6 minutes. this clears my words of the week table 
-cron.schedule('0 */7 * * *', function() {
+cron.schedule('*/7 * * * *', function() {
   db.wordsOfTheWeek.destroy({where:{}}).then(function(data){
     console.log(`Table Cleared`)
   })
