@@ -17,6 +17,13 @@ app.post('/login', passport.authenticate('local-signin', {
     }
  
 ));
+// all words 
+// Get all examples
+	app.get('/api/words', function(req, res) {
+		db.Word.findAll({}).then(function(dbExamples) {
+			res.json(dbExamples);
+		});
+	});
   //get word of the day from word of the day table 
 	app.get('/api/dailyWord', function(req, res) {
 		db.WordOfDay.findOne({}).then((dbExample) => {

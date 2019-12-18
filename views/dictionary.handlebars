@@ -1,7 +1,8 @@
 <div class="container">
       <div class="row">
           <div class="col-8 offset-1">
-        <h1>Dictionary:</h1>
+          <br>
+        <a href="/"><h1><em>Gamma:<em></h1></a>
         <hr>
           </div>  
       </div>
@@ -10,7 +11,7 @@
             {{!-- begin tabbing --}}
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="/">Vocabulary</a>
+              <a class="nav-link" href="/">Vocabulary</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/favorites">Favorites</a>
@@ -31,7 +32,7 @@
         <ul id="example-list" class="list-group">
           {{#each words}}
           <li data-id="{{this.id}}" class="list-group-item" style="border-bottom:2px lightgrey solid;">
-            <a href="example/{{this.id}}"><strong>{{this.word_itself}}</strong>: <em>{{this.word_Type}}</em>, {{this.word_Definition}}</a>
+            <a href="example/{{this.id}}"><strong>{{this.word_itself}}</strong>: <em>{{this.word_Type}}</em>, {{this.word_Definition}} </a>
           </li>
           {{/each}}
 </ul>

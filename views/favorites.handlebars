@@ -1,7 +1,8 @@
 <div class="container">
       <div class="row">
           <div class="col-8 offset-1">
-        <h1>Your Favorites</h1>
+          <br>
+        <a href="/"><h1><em>Gamma:<em></h1></a>
         <hr>
           </div>  
       </div>
@@ -10,7 +11,7 @@
             {{!-- begin tabbing --}}
           <ul class="nav nav-tabs">
             <li class="nav-item">
-              <a class="nav-link active" href="/">Vocabulary</a>
+              <a class="nav-link" href="/">Vocabulary</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/favorites">Favorites</a>
@@ -21,20 +22,26 @@
             <li class="nav-item">
               <a class="nav-link" href="/contact">Contact</a>
             </li>
-            {{!-- <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li> --}}
           </ul>
         </div>
       </div>
               {{!-- end tabbing  --}}
+  <div class="container">
+  <div class="jumbotron mt-4">
+    <h1 class="display-4 text-center">Feature Comming Soon!
+      <span role="img" aria-label="Face with rolling eyes">🙄</span>
+    </h1>
+    <a href="/">← Back To Home</a>
+  </div>
+</div>
   <br>
   <div class="row">
   <div class="col offset-1">
         <ul id="example-list" class="list-group">
           {{#each words}}
           <li data-id="{{this.id}}" class="list-group-item" style="border-bottom:2px lightgrey solid;">
-            <a href="example/{{this.id}}"><strong>{{this.word_itself}}</strong>: <em>{{this.word_Type}}</em>, {{this.word_Definition}}</a>
+            <a href="example/{{this.id}}"><strong>{{this.word_itself}}</strong>: <em>{{this.word_Type}}</em>, {{this.word_Definition}} </a>
+            <p><i class="fas fa-heart favorite"></i></p>
           </li>
           {{/each}}
 </ul>

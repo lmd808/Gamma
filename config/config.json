@@ -2,7 +2,7 @@
 	"development": {
 		"username": "root",
 		"password": "root",
-		"database": "exampledb",
+		"database": "gamma_db",
 		"host": "localhost",
 		"dialect": "mysql",
 		"operatorsAliases": false 

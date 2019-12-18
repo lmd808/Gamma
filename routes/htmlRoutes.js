@@ -40,6 +40,15 @@ app.get('/dictionary', function(req, res) {
 		});
 	});
 
+app.get('/submit', function(req, res) {
+		db.Word.findAll({order: [
+      ['word_itself', 'ASC'], // Sorts by COLUMN_NAME_EXAMPLE in ascending order
+]}).then(function(dbExamples) {
+			res.render('submit', {
+				words: dbExamples
+			});
+		});
+	});
 // load words of the week table 
 app.get('/wordOfWeek', function (req, res){
 	db.wordsOfTheWeek.findAll({order: [

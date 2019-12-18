@@ -8,36 +8,36 @@ var $exampleList = $('#example-list');
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-	saveExample: function(example) {
+	saveFavorite: function(example) {
 		return $.ajax({
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			type: 'POST',
-			url: 'api/examples',
+			url: 'api/favorites',
 			data: JSON.stringify(example)
 		});
 	},
-		getExamples: function() {
+	getFavorite: function() {
 		return $.ajax({
-			url: 'api/words',
+			url: 'api/favorites',
 			type: 'GET'
 		});
 	},
-	deleteExample: function(id) {
+	deleteFavorite: function(id) {
 		return $.ajax({
-			url: 'api/examples/' + id,
+			url: 'api/favorites/' + id,
 			type: 'DELETE'
 		});
 	}
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-	API.getExamples().then(function(data) {
+var refreshFavorite = function() {
+	API.getFavorite().then(function(data) {
 		console.log(data);
 		var $examples = data.map(function(word) {
-			var $a = $('<a>').text(word.word_itself + ': ' + word.word_Definition).attr('href', '/example/' + word.id);
+			var $a = $('<a>').text(`${word.word_itself}: ${word.word_Definition}`).attr('href', '/example/' + word.id);
 
 			var $li = $('<li>')
 				.attr({

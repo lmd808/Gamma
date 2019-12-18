@@ -5,7 +5,7 @@
         <div class="card-body">
           <h5 class="card-title">Word Specifications</h5>
           <p>
-            <strong>ID</strong>: {{word.id}}
+            <strong>ID</strong >: {{word.id}}
           </p>
           <p>
             <strong>Word</strong>: {{word.word_itself}}
@@ -19,6 +19,9 @@
           <p> 
             <strong>Example of Use:</strong> {{word.example_Use}}
           </p>
+          <button id="save_fav">Click to Save Word to Favorites</button>
+          {{!-- <p><i class="far fa-heart"></i></p> --}}
+          {{!-- on click send this.id and user.id to post request  --}}
             <a href="/submit">← Add More Words</a>
             <a href="/">← Back To Home</a>
         </div>
@@ -26,3 +29,6 @@
     </div>
   </div>
 </div>
+
+<script>
+</script>
