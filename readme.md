@@ -10,7 +10,7 @@ NODE.js, Express, Handlebars, passport.js, sessions, sequelize, mysql, CRON, nod
 
 ## Heroku Link: 
 * Repo: [Git hub Repo](https://github.com/lmd808/gamma).
-* Deployed Heroku App[Heroku App](https://morning-refuge-18508.herokuapp.com/).
+* Deployed Heroku App[Heroku App](https://desolate-eyrie-68120.herokuapp.com/).
 
 # HomePage and Quick Site Demo:  
 
