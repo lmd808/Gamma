@@ -82,7 +82,7 @@ function allUsers() {
 }
 
 // cron job scheduled for ever min for testing
-cron.schedule('0 0 */1 * *', function() {
+cron.schedule('1 * */1 * *', function() {
 	allUsers();
 	// randomly select a word from my database. that word will then be sent out to my word of the day table
 	db.Word.findOne({ order: [ db.Sequelize.fn('RAND') ] }).then((dbExample) => {
@@ -134,7 +134,7 @@ function wordsOfTheWeek() {
 		.then(function(data) {});
 }
 // cron scheduler set to ever 6 minutes. this clears my words of the week table
-cron.schedule('0 0 */7 * *', function() {
+cron.schedule('1 * */7 * *', function() {
 	db.wordsOfTheWeek.destroy({ where: {} }).then(function(data) {
 		console.log(`Table Cleared`);
 	});
