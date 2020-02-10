@@ -46,7 +46,7 @@ db.sequelize.sync(syncOptions).then(function() {
 //load passport strategies
 require('./config/passport.js')(passport, db.User);
 
-// welcome to the fuckening
+// welcome to the party
 
 // --------------------------------------------------------------------
 // --------------------------------------------------------------------
@@ -54,7 +54,7 @@ require('./config/passport.js')(passport, db.User);
 // --------------------------------------------------------------------
 // cron job daily
 var cron = require('node-cron');
-// varuables to hold my sql data as I shift it arounf
+// variables to hole my data as it is shifted around
 var returnOBJ;
 var word_itself;
 var word_id;
@@ -82,7 +82,7 @@ function allUsers() {
 }
 
 // cron job scheduled for ever min for testing
-cron.schedule('0 * * * *', function() {
+cron.schedule('0 8 * * *', function() {
 	allUsers();
 	// randomly select a word from my database. that word will then be sent out to my word of the day table
 	db.Word.findOne({ order: [ db.Sequelize.fn('RAND') ] }).then((dbExample) => {
@@ -154,6 +154,7 @@ let transport = nodemailer.createTransport({
 });
 
 // email function called in initial cron job (send an email with every word of the day update)
+// currently this is going to an testing account w/ node mailer 
 function email(dbWordOfDay) {
 	const message = {
 		from: 'safetrek001@gmail.com', // Sender address
